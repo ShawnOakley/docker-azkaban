@@ -18,8 +18,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server && mkdir /v
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y less ntp net-tools inetutils-ping curl git unzip telnet
 
 #MySQL
-RUN dpkg -P mysql-client-5.5
-RUN apt-get install -f
+RUN apt-get install mysql-workbench  
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server-5.5 && \
     sed -i -e "s|127.0.0.1|0.0.0.0|g" -e "s|max_allowed_packet.*|max_allowed_packet = 1024M|" /etc/mysql/my.cnf
 
